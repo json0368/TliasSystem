@@ -10,4 +10,4 @@
 - 数据库：MySQL
 
 ## 课程地址
-[黑马程序员 JavaWeb + AI 课程](【全网首发AI+JavaWeb开发入门，Tlias教学管理系统项目实战全套视频教程，从需求分析、设计、前后端开发、测试、程序优化到项目部署一套搞定】https://www.bilibili.com/video/BV1yGydYEE3H?p=85&vd_source=0be354f22ca875bcfc6d985685a2ba61)
+[黑马程序员 JavaWeb + AI 课程](https://www.bilibili.com/video/BV1yGydYEE3H?p=85&vd_source=0be354f22ca875bcfc6d985685a2ba61)
