@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.json0368.tliassystem.mapper.EmpMapper">
+    <select id="findByPage" resultType="org.json0368.tliassystem.pojo.Emp">
+        select e.*, d.name as dept_name from emp e left join dept d on e.dept_id = d.id
+        <where>
+            <if test="name != null and name != ''">
+                and e.name like concat('%', #{name}, '%')
+            </if>
+            <if test="gender != null">
+                and e.gender = #{gender}
+            </if>
+            <if test="begin != null and end != null">
+                and e.entry_date between #{begin} and #{end}
+            </if>
+        </where>
+        order by e.update_time
+    </select>
+    <delete id="deleteByIds">
+        delete from emp where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into emp(username, name, gender, create_time, update_time
+                <if test="phone != null and phone != ''">
+                    ,phone
+                </if>
+                <if test="job != null">
+                    ,job
+                </if>
+                <if test="salary != null">
+                    ,salary
+                </if>
+                <if test="image != null and image != ''">
+                    ,image
+                </if>
+                <if test="entryDate != null">
+                    ,entry_date
+                </if>
+                <if test="deptId != null">
+                    ,dept_id
+                </if>
+        )
+        values (#{username},#{name},#{gender},#{createTime},#{updateTime}
+                <if test="phone != null and phone != ''">
+                    ,#{phone}
+                </if>
+                <if test="job != null">
+                    ,#{job}
+                </if>
+                <if test="salary != null">
+                    ,#{salary}
+                </if>
+                <if test="image != null and image != ''">
+                    ,#{image}
+                </if>
+                <if test="entryDate != null">
+                    ,#{entryDate}
+                </if>
+                <if test="deptId != null">
+                    ,#{deptId}
+                </if>
+        )
+    </insert>
+    <update id="update">
+        update emp
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="job != null">
+                job = #{job},
+            </if>
+            <if test="salary != null">
+                salary = #{salary},
+            </if>
+            <if test="image != null and image != ''">
+                image = #{image},
+            </if>
+            <if test="entryDate != null">
+                entry_date = #{entryDate},
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where id = #{id}
+    </update>
+    <select id="findAll" resultType="org.json0368.tliassystem.pojo.Emp">
+        select e.*, d.name as dept_name from emp e left join dept d on e.dept_id = d.id order by e.entry_date
+    </select>
+</mapper>

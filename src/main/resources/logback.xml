@@ -27,7 +27,7 @@
     
     <!-- 日志输出级别 -->
     <!-- 级别分为：ALL < TRACE < DEBUG < INFO < WARN < ERROR < OFF -->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>
